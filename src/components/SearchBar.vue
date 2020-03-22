@@ -1,14 +1,13 @@
 <template>
   <v-container>
-
     <v-text-field
       label="Podcast Search"
       v-model="queryModel"
-      outlined
-    ></v-text-field>
-
-    <v-btn large color="primary" @click="submit">SEARCH</v-btn>
-
+    >
+      <template v-slot:append>
+        <v-btn class="ma-0" large color="primary" @click="submit">SEARCH</v-btn>
+      </template>
+    </v-text-field>
   </v-container>
 </template>
 
