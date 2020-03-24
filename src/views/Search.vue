@@ -1,6 +1,10 @@
 <template>
-  <div class="home">
+  <div>
     <SearchBar :query="query"></SearchBar>
+
+    <p>HITS: {{ searchResults.hits.hits.length }}</p>
+
+    <hr>
     <p>QUERY: {{ query }}</p>
     <!-- use router-link component for navigation. -->
     <!-- specify the link by passing the `to` prop. -->
@@ -8,7 +12,7 @@
     <router-link to="/search/foo">Go to Foo</router-link>
     <br>
     <router-link to="/search/bar">Go to Bar</router-link>
-    </div>
+  </div>
 </template>
 
 <script>
@@ -17,7 +21,7 @@ import SearchBar from '@/components/SearchBar.vue'
 const axios = require('axios')
 
 export default {
-  name: 'Home',
+  name: 'Search',
   components: {
     SearchBar
   },
