@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     submit: function () {
-      this.$router.push({ path: `/search/${this.queryModel}` })
+      this.$router.push({ path: `/search/${this.queryModel}` }).catch(noopErr => {})
     }
   },
   watch: {
