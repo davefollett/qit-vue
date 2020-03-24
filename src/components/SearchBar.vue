@@ -3,9 +3,10 @@
     <v-text-field
       label="Podcast Search"
       v-model="queryModel"
+      color="teal"
     >
       <template v-slot:append>
-        <v-btn class="ma-0" large color="primary" @click="submit">SEARCH</v-btn>
+        <v-btn class="ma-0 white--text" large color="teal" @click="submit">SEARCH</v-btn>
       </template>
     </v-text-field>
   </v-container>
