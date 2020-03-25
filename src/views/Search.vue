@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     search: function () {
-      console.log(`Q: ${this.query}`)
+      // console.log(`Q: ${this.query}`)
       const token = Buffer.from(`${process.env.VUE_APP_ELASTIC_USERNAME}:${process.env.VUE_APP_ELASTIC_PASSWORD}`, 'utf8').toString('base64')
       const URL = `${process.env.VUE_APP_CORS_WRAPPER}/${process.env.VUE_APP_BASE_ELASTIC_URL}`
         .replace('{searchTerm}', this.query)
