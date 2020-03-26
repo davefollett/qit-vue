@@ -11,12 +11,16 @@
         :result="result"/>
     </div>
     <div v-else>
-      <v-progress-circular
-        indeterminate
-        color="teal"
-        size="80"
-        width="8"
-      ></v-progress-circular>
+      <v-container fluid>
+        <v-row justify="center">
+          <v-progress-circular
+            indeterminate
+            color="teal"
+            size="80"
+            width="8"
+          ></v-progress-circular>
+        </v-row>
+      </v-container>
     </div>
   </div>
 </template>
@@ -35,7 +39,8 @@ export default {
   },
   data: () => ({
     query: 'default',
-    searchResults: null
+    searchResults: null,
+    data: null
   }),
   beforeRouteUpdate (to, from, next) {
     this.query = to.params.query
@@ -66,6 +71,7 @@ export default {
         })
         .then(response => {
           this.searchResults = response.data.hits.hits
+          this.data = response.data
         })
     }
   }
