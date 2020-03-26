@@ -1,15 +1,23 @@
 <template>
   <div>
     <SearchBar :query="query"></SearchBar>
-
-    <p>{{ searchResults.length }} results</p>
-    <hr class="mb-4">
-    <ul v-for="result in searchResults"
+    <div v-if="searchResults">
+      <p>{{ searchResults.length }} results</p>
+      <hr class="mb-4">
+      <SearchResultCard
+        class="mb-4"
+        v-for="result in searchResults"
         :key="result._id"
-    >
-      <SearchResultCard class="mb-4" :result="result"/>
-    </ul>
-
+        :result="result"/>
+    </div>
+    <div v-else>
+      <v-progress-circular
+        indeterminate
+        color="teal"
+        size="80"
+        width="8"
+      ></v-progress-circular>
+    </div>
   </div>
 </template>
 
@@ -27,7 +35,7 @@ export default {
   },
   data: () => ({
     query: 'default',
-    searchResults: []
+    searchResults: null
   }),
   beforeRouteUpdate (to, from, next) {
     this.query = to.params.query
@@ -38,8 +46,14 @@ export default {
     this.query = this.$route.params.query
     this.search()
   },
+  computed: {
+    numberResults: function () {
+      return this.searchResults.length
+    }
+  },
   methods: {
     search: function () {
+      this.searchResults = null
       const token = Buffer.from(`${process.env.VUE_APP_ELASTIC_USERNAME}:${process.env.VUE_APP_ELASTIC_PASSWORD}`, 'utf8').toString('base64')
       const URL = `${process.env.VUE_APP_CORS_WRAPPER}/${process.env.VUE_APP_BASE_ELASTIC_URL}`
         .replace('{searchTerm}', this.query)
