@@ -4,6 +4,7 @@
       label="Podcast Search"
       v-model="queryModel"
       color="teal"
+      @keyup.enter="submit"
     >
       <template v-slot:append>
         <v-btn class="ma-0 white--text" large color="teal" @click="submit">SEARCH</v-btn>
