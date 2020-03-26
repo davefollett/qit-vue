@@ -2,32 +2,32 @@
   <div>
     <SearchBar :query="query"></SearchBar>
 
-    <p>HITS: {{ searchResults.hits.hits.length }}</p>
+    <p>{{ searchResults.length }} results</p>
+    <hr class="mb-4">
+    <ul v-for="result in searchResults"
+        :key="result._id"
+    >
+      <SearchResultCard class="mb-4" :result="result"/>
+    </ul>
 
-    <hr>
-    <p>QUERY: {{ query }}</p>
-    <!-- use router-link component for navigation. -->
-    <!-- specify the link by passing the `to` prop. -->
-    <!-- `<router-link>` will be rendered as an `<a>` tag by default -->
-    <router-link to="/search/foo">Go to Foo</router-link>
-    <br>
-    <router-link to="/search/bar">Go to Bar</router-link>
   </div>
 </template>
 
 <script>
 import SearchBar from '@/components/SearchBar.vue'
+import SearchResultCard from '@/components/SearchResultCard.vue'
 
 const axios = require('axios')
 
 export default {
   name: 'Search',
   components: {
-    SearchBar
+    SearchBar,
+    SearchResultCard
   },
   data: () => ({
     query: 'default',
-    searchResults: {}
+    searchResults: []
   }),
   beforeRouteUpdate (to, from, next) {
     this.query = to.params.query
@@ -40,7 +40,6 @@ export default {
   },
   methods: {
     search: function () {
-      // console.log(`Q: ${this.query}`)
       const token = Buffer.from(`${process.env.VUE_APP_ELASTIC_USERNAME}:${process.env.VUE_APP_ELASTIC_PASSWORD}`, 'utf8').toString('base64')
       const URL = `${process.env.VUE_APP_CORS_WRAPPER}/${process.env.VUE_APP_BASE_ELASTIC_URL}`
         .replace('{searchTerm}', this.query)
@@ -52,7 +51,7 @@ export default {
           }
         })
         .then(response => {
-          this.searchResults = response.data
+          this.searchResults = response.data.hits.hits
         })
     }
   }
