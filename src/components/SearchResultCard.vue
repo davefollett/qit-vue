@@ -17,6 +17,7 @@
         <v-icon>mdi-plus</v-icon>
       </v-list-item-avatar>
     </v-list-item>
+     <audio :src="audioUrl" controls preload="none"></audio>
   </v-card>
 </template>
 
@@ -32,6 +33,9 @@ export default {
     }
   },
   computed: {
+    audioUrl: function () {
+      return this.result._source.audio_url
+    },
     date: function () {
       return this.result._source.published
     },
