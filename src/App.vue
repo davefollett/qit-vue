@@ -10,11 +10,20 @@
       <v-spacer></v-spacer>
 
       <v-btn icon to="/">
-        <v-icon>mdi-home</v-icon>
+        <v-icon large>mdi-home</v-icon>
       </v-btn>
 
+      <!-- <v-badge
+        content="0"
+        :value="1"
+        color="green"
+        overlap
+      >
+        <v-icon large>mdi-playlist-music</v-icon>
+      </v-badge> -->
+
       <v-btn icon to="/about">
-        <v-icon>mdi-information</v-icon>
+        <v-icon large>mdi-information</v-icon>
       </v-btn>
 
     </v-app-bar>

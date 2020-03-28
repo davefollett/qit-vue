@@ -12,9 +12,8 @@
 
       <v-list-item-avatar
         tile
-        size="40"
       >
-        <v-icon>mdi-plus</v-icon>
+        <v-icon x-large color="teal">mdi-playlist-plus</v-icon>
       </v-list-item-avatar>
     </v-list-item>
      <audio :src="audioUrl" controls preload="none"></audio>
