@@ -11,11 +11,9 @@ const getters = {
 }
 
 const actions = {
-  search ({ commit }, query) {
-    searchAPI.search(query)
-      .then(response => {
-        commit('SET_RESULTS', response.data)
-      })
+  async search ({ commit }, query) {
+    const response = await searchAPI.search(query)
+    commit('SET_RESULTS', response.data)
   }
 }
 

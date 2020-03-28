@@ -11,7 +11,7 @@ const instance = axios.create({
 })
 
 const searchAPI = {
-  search (query) {
+  async search (query) {
     const SEARCH_URL = '/podcasts/_search?q={searchTerm}&size={maxResults}'
       .replace('{searchTerm}', query)
       .replace('{maxResults}', process.env.VUE_APP_MAX_RESULTS)

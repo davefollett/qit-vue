@@ -56,8 +56,8 @@ export default {
     }
   },
   methods: {
-    search: function () {
-      this.$store.dispatch('SearchResults/search', this.query)
+    search: async function () {
+      await this.$store.dispatch('SearchResults/search', this.query)
     }
   }
 }
