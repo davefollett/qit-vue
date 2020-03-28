@@ -29,8 +29,6 @@
 import SearchBar from '@/components/SearchBar.vue'
 import SearchResultCard from '@/components/SearchResultCard.vue'
 
-const axios = require('axios')
-
 export default {
   name: 'Search',
   components: {
@@ -38,41 +36,28 @@ export default {
     SearchResultCard
   },
   data: () => ({
-    query: 'default',
-    searchResults: null,
-    data: null
+    query: 'default'
   }),
   beforeRouteUpdate (to, from, next) {
     this.query = to.params.query
     this.search()
     next()
   },
-  created () {
+  mounted () {
     this.query = this.$route.params.query
     this.search()
   },
   computed: {
+    searchResults: function () {
+      return this.$store.getters['SearchResults/searchResults']
+    },
     numberResults: function () {
       return this.searchResults.length
     }
   },
   methods: {
     search: function () {
-      this.searchResults = null
-      const token = Buffer.from(`${process.env.VUE_APP_ELASTIC_USERNAME}:${process.env.VUE_APP_ELASTIC_PASSWORD}`, 'utf8').toString('base64')
-      const URL = `${process.env.VUE_APP_CORS_WRAPPER}/${process.env.VUE_APP_BASE_ELASTIC_URL}`
-        .replace('{searchTerm}', this.query)
-        .replace('{maxResults}', process.env.VUE_APP_MAX_RESULTS)
-      axios
-        .get(URL, {
-          headers: {
-            Authorization: `Basic ${token}`
-          }
-        })
-        .then(response => {
-          this.searchResults = response.data.hits.hits
-          this.data = response.data
-        })
+      this.$store.dispatch('SearchResults/search', this.query)
     }
   }
 }
