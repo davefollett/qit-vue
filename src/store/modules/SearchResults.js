@@ -1,4 +1,4 @@
-const axios = require('axios')
+import searchAPI from '@/api/search-api'
 
 const state = {
   results: null
@@ -12,16 +12,7 @@ const getters = {
 
 const actions = {
   search ({ commit }, query) {
-    const token = Buffer.from(`${process.env.VUE_APP_ELASTIC_USERNAME}:${process.env.VUE_APP_ELASTIC_PASSWORD}`, 'utf8').toString('base64')
-    const URL = `${process.env.VUE_APP_CORS_WRAPPER}/${process.env.VUE_APP_BASE_ELASTIC_URL}`
-      .replace('{searchTerm}', query)
-      .replace('{maxResults}', process.env.VUE_APP_MAX_RESULTS)
-    axios
-      .get(URL, {
-        headers: {
-          Authorization: `Basic ${token}`
-        }
-      })
+    searchAPI.search(query)
       .then(response => {
         commit('SET_RESULTS', response.data)
       })
