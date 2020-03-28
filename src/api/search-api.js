@@ -17,6 +17,13 @@ const searchAPI = {
       .replace('{maxResults}', process.env.VUE_APP_MAX_RESULTS)
 
     return instance.get(SEARCH_URL)
+  },
+  async totalIndexed () {
+    const response = await instance.get('/podcasts/_count')
+    return response.data.count
+  },
+  async lastTen () {
+    return instance.get('/podcasts/_search?size=10&sort=published:desc')
   }
 }
 

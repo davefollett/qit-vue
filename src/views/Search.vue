@@ -1,27 +1,29 @@
 <template>
   <div>
     <SearchBar :query="query"></SearchBar>
-    <div v-if="searchResults">
-      <p>{{ searchResults.length }} results</p>
-      <hr class="mb-4">
-      <SearchResultCard
-        class="mb-4"
-        v-for="result in searchResults"
-        :key="result._id"
-        :result="result"/>
-    </div>
-    <div v-else>
-      <v-container fluid>
-        <v-row justify="center">
-          <v-progress-circular
-            indeterminate
-            color="teal"
-            size="80"
-            width="8"
-          ></v-progress-circular>
-        </v-row>
-      </v-container>
-    </div>
+    <v-container>
+      <div v-if="searchResults">
+        <p>{{ searchResults.length }} results</p>
+        <hr class="mb-4">
+        <SearchResultCard
+          class="mb-4"
+          v-for="result in searchResults"
+          :key="result._id"
+          :result="result"/>
+      </div>
+      <div v-else>
+        <v-container fluid>
+          <v-row justify="center">
+            <v-progress-circular
+              indeterminate
+              color="teal"
+              size="80"
+              width="8"
+            ></v-progress-circular>
+          </v-row>
+        </v-container>
+      </div>
+    </v-container>
   </div>
 </template>
 
@@ -56,8 +58,8 @@ export default {
     }
   },
   methods: {
-    search: async function () {
-      await this.$store.dispatch('SearchResults/search', this.query)
+    search: function () {
+      this.$store.dispatch('SearchResults/search', this.query)
     }
   }
 }
