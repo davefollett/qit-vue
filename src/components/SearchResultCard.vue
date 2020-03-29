@@ -6,7 +6,7 @@
     <v-list-item three-line>
       <v-list-item-content>
         <div class="overline mb-4">{{date}}</div>
-        <v-list-item-title class="subtitle-2 mb-1">{{ episodeTitle }}</v-list-item-title>
+        <v-list-item-title class="subtitle-2 mb-1 text-wrap">{{ episodeTitle }}</v-list-item-title>
         <v-list-item-subtitle>{{podcastTitle}}</v-list-item-subtitle>
       </v-list-item-content>
 
