@@ -1,16 +1,18 @@
 <template>
   <div class="home">
-    <v-row justify="center">
-      <p class="title">
-        Welcome to QIT, the website that searches for software develper podcasts by topic.
-      </p>
-    </v-row>
+    <v-container>
+      <v-row justify="center">
+        <p class="title">
+          Welcome to QIT, the website that searches for software develper podcasts by topic.
+        </p>
+      </v-row>
 
-    <v-row justify="center">
-      <p>
-        Get started searching or checkout the lastest 10 podcasts.
-      </p>
-    </v-row>
+      <v-row justify="center">
+        <p>
+          Get started searching or checkout the lastest 10 podcasts.
+        </p>
+      </v-row>
+    </v-container>
 
     <v-row justify="center">
       <SearchBar></SearchBar>
