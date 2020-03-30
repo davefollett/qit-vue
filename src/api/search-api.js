@@ -22,8 +22,8 @@ const searchAPI = {
     const response = await instance.get('/podcasts/_count')
     return response.data.count
   },
-  async lastTen () {
-    return instance.get('/podcasts/_search?size=10&sort=published:desc')
+  async mostRecent (number) {
+    return instance.get(`/podcasts/_search?size=${number}&sort=published:desc`)
   }
 }
 

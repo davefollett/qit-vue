@@ -18,8 +18,8 @@
       </v-row>
 
       <SearchResultsCarousel
-        title="10 Most Recent Podcasts"
-        :results="lastTen"/>
+        :title="mostRecentCarouselTitle"
+        :results="mostRecent"/>
 
     </v-container>
   </div>
@@ -35,16 +35,22 @@ export default {
     SearchBar,
     SearchResultsCarousel
   },
+  data: () => ({
+    numberOfMostRecent: 5
+  }),
   mounted () {
     this.$store.dispatch('SearchResults/totalIndexed')
-    this.$store.dispatch('SearchResults/lastTen')
+    this.$store.dispatch('SearchResults/mostRecent', this.numberOfMostRecent)
   },
   computed: {
     totalIndexed: function () {
       return this.$store.getters['SearchResults/totalIndexed']
     },
-    lastTen: function () {
-      return this.$store.getters['SearchResults/lastTen']
+    mostRecent: function () {
+      return this.$store.getters['SearchResults/mostRecent']
+    },
+    mostRecentCarouselTitle: function () {
+      return `${this.numberOfMostRecent} Most Recent Podcasts`
     }
   }
 }

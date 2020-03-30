@@ -3,7 +3,7 @@ import searchAPI from '@/api/search-api'
 const state = {
   results: null,
   totalIndexed: 0,
-  lastTen: null
+  mostRecent: null
 }
 
 const getters = {
@@ -13,8 +13,8 @@ const getters = {
   totalIndexed: state => {
     return state.totalIndexed
   },
-  lastTen: state => {
-    return (state.lastTen) ? state.lastTen.hits.hits : null
+  mostRecent: state => {
+    return (state.mostRecent) ? state.mostRecent.hits.hits : null
   }
 }
 
@@ -27,9 +27,9 @@ const actions = {
     const total = await searchAPI.totalIndexed()
     commit('SET_TOTAL_INDEXED', total)
   },
-  async lastTen ({ commit }) {
-    const response = await searchAPI.lastTen()
-    commit('SET_LAST_TEN', response.data)
+  async mostRecent ({ commit }, number) {
+    const response = await searchAPI.mostRecent(number)
+    commit('SET_MOST_RECENT', response.data)
   }
 }
 
@@ -40,8 +40,8 @@ const mutations = {
   SET_TOTAL_INDEXED (state, total) {
     state.totalIndexed = total
   },
-  SET_LAST_TEN (state, lastTen) {
-    state.lastTen = lastTen
+  SET_MOST_RECENT (state, mostRecent) {
+    state.mostRecent = mostRecent
   }
 }
 
