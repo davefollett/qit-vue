@@ -13,7 +13,12 @@
       <v-list-item-avatar
         tile
       >
+      <v-btn icon @click="addToQueue" v-if="!isQueued">
         <v-icon x-large color="teal">mdi-playlist-plus</v-icon>
+      </v-btn>
+      <v-btn icon @click="removeFromQueue" v-if="isQueued">
+        <v-icon x-large color="teal">mdi-playlist-minus</v-icon>
+      </v-btn>
       </v-list-item-avatar>
     </v-list-item>
      <audio :src="audioUrl" controls preload="none"></audio>
@@ -43,6 +48,17 @@ export default {
     },
     episodeTitle: function () {
       return this.result._source.episode_title
+    },
+    isQueued: function () {
+      return this.$store.getters['Queue/isQueued'](this.result)
+    }
+  },
+  methods: {
+    addToQueue: function () {
+      this.$store.dispatch('Queue/add', this.result)
+    },
+    removeFromQueue: function () {
+      this.$store.dispatch('Queue/remove', this.result)
     }
   }
 }
