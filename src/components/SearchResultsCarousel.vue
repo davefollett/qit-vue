@@ -22,11 +22,11 @@
             <v-list-item-subtitle>{{result._source.podcast_title}}</v-list-item-subtitle>
           </v-list-item-content>
 
-          <v-list-item-avatar
+          <!-- <v-list-item-avatar
             tile
           >
             <v-icon x-large color="teal">mdi-playlist-plus</v-icon>
-          </v-list-item-avatar>
+          </v-list-item-avatar> -->
         </v-list-item>
         <!-- <audio :src="audioUrl" controls preload="none"></audio> -->
       </v-carousel-item>
