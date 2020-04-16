@@ -7,26 +7,36 @@
       <v-list-item-content>
         <div class="overline mb-4">{{date}}</div>
         <v-list-item-title class="subtitle-2 mb-1 text-wrap">{{ episodeTitle }}</v-list-item-title>
-        <v-list-item-subtitle>{{podcastTitle}}</v-list-item-subtitle>
+        <v-list-item-subtitle>{{ podcastTitle }}</v-list-item-subtitle>
       </v-list-item-content>
 
       <v-list-item-avatar
         tile
       >
-      <v-btn icon @click="addToQueue" v-if="!isQueued">
-        <v-icon x-large color="teal">mdi-playlist-plus</v-icon>
-      </v-btn>
-      <v-btn icon @click="removeFromQueue" v-if="isQueued">
-        <v-icon x-large color="teal">mdi-playlist-minus</v-icon>
-      </v-btn>
+        <v-btn
+          v-if="!isQueued"
+          icon
+          @click="addToQueue"
+        >
+          <v-icon x-large color="teal">mdi-playlist-plus</v-icon>
+        </v-btn>
+
+        <v-btn
+          v-else
+          icon
+          @click="removeFromQueue"
+        >
+          <v-icon x-large color="teal">mdi-playlist-minus</v-icon>
+        </v-btn>
+
       </v-list-item-avatar>
     </v-list-item>
+
      <audio :src="audioUrl" controls preload="none"></audio>
   </v-card>
 </template>
 
 <script>
-// import { format } from 'date-fns'
 
 export default {
   name: 'SearchResultCard',
