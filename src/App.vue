@@ -19,7 +19,9 @@
         color="red"
         overlap
       >
-        <v-icon large>mdi-playlist-music</v-icon>
+        <v-btn icon to="/queue">
+          <v-icon large>mdi-playlist-music</v-icon>
+        </v-btn>
       </v-badge>
 
       <v-btn icon to="/about">
