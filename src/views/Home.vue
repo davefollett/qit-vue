@@ -17,11 +17,11 @@
         <SearchBar></SearchBar>
       </v-row>
 
-      <div v-if="mostRecent">
-        <SearchResultsCarousel
-          :title="mostRecentCarouselTitle"
-          :results="mostRecent"/>
-      </div>
+      <SearchResultsCarousel
+        v-if="mostRecent"
+        :title="mostRecentCarouselTitle"
+        :results="mostRecent"
+      />
 
     </v-container>
   </div>
