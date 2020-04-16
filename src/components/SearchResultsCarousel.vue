@@ -40,7 +40,7 @@ export default {
   name: 'SearchResultsCarousel',
   props: {
     results: {
-      type: Object,
+      type: Array,
       required: true
     },
     title: {
