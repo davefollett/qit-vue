@@ -13,14 +13,14 @@
         <v-icon large>mdi-home</v-icon>
       </v-btn>
 
-      <!-- <v-badge
-        content="0"
-        :value="1"
-        color="green"
+      <v-badge
+        :content="queueLegnth"
+        :value="queueLegnth"
+        color="red"
         overlap
       >
         <v-icon large>mdi-playlist-music</v-icon>
-      </v-badge> -->
+      </v-badge>
 
       <v-btn icon to="/about">
         <v-icon large>mdi-information</v-icon>
@@ -40,9 +40,10 @@
 
 export default {
   name: 'App',
-
-  data: () => ({
-    //
-  })
+  computed: {
+    queueLegnth: function () {
+      return this.$store.getters['Queue/length']
+    }
+  }
 }
 </script>

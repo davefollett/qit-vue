@@ -1,7 +1,6 @@
 import Vue from 'vue'
 
 const state = {
-  // queue: new Map()
   queue: { }
 }
 
@@ -10,12 +9,10 @@ const getters = {
     return state.queue
   },
   isQueued: (state) => (episode) => {
-    // if (episode._id === '51C11FE625141D4E5A78D1012B701112') {
-    // console.log(episode._id)
-    // console.log(state.queue)
-    // }
-    // return state.queue.has(episode._id)
     return Object.prototype.hasOwnProperty.call(state.queue, episode._id)
+  },
+  length: state => {
+    return Object.keys(state.queue).length
   }
 }
 
@@ -34,15 +31,15 @@ const mutations = {
     // localStorage.setItem('key', JSON.stringify(myObj))
     // state.queue = JSON.parse(localStorage.getItem('qit-q'))
   },
+  // Vue's reactivity system can't detect key/property additions, use Vue.set() to fix it.
   ADD (state, episode) {
-    // state.queue.set(episode._id, episode)
     Vue.set(state.queue, episode._id, episode)
   },
+  // Vue's reactivity system can't detect key/property removals, use Vue.delete() to fix it.
   REMOVE (state, episode) {
-    // state.queue.delete(episode._id)
+    Vue.delete(state.queue, episode._id)
   },
   CLEAR_QUEUE (state) {
-    // state.queue.clear()
     state.queue = {}
   }
 }
