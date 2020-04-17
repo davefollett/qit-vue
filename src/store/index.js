@@ -14,7 +14,9 @@ const store = new Vuex.Store({
 })
 
 store.subscribe((mutation, state) => {
-  console.log(mutation)
+  // console.log(mutation)
+  // console.log(state)
+  // console.log(store)
 })
 
 export default store

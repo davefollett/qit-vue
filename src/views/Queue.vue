@@ -1,6 +1,9 @@
 <template>
   <div class="home">
     <v-container>
+      <v-btn @click="clearQueue">
+        CLEAR
+      </v-btn>
       <v-row justify="center">
         <p class="title">
           {{queueLegnth}} podcasts episodes are in your queue.
@@ -11,7 +14,8 @@
           class="mb-4"
           v-for="episode in episodes"
           :key="episode._id"
-          :episode="episode"/>
+          :episode="episode"
+        />
 
     </v-container>
   </div>
@@ -34,6 +38,11 @@ export default {
     },
     episodes: function () {
       return this.$store.getters['Queue/queue']
+    }
+  },
+  methods: {
+    clearQueue: function () {
+      this.$store.dispatch('Queue/clear')
     }
   }
 }
