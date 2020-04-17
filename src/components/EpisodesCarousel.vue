@@ -2,7 +2,7 @@
   <v-card
     raised
   >
-    <v-card-title>{{ title }}</v-card-title>
+    <v-card-title class="teal white--text">{{ title }}</v-card-title>
     <hr>
     <v-carousel
       height="200"
@@ -15,29 +15,20 @@
         v-for="episode in episodes"
         :key="episode._id"
       >
-        <v-list-item three-line>
-          <v-list-item-content>
-            <div class="overline mb-4">{{episode._source.published}}</div>
-            <v-list-item-title class="subtitle-2 mb-1 text-wrap">{{ episode._source.episode_title }}</v-list-item-title>
-            <v-list-item-subtitle>{{episode._source.podcast_title}}</v-list-item-subtitle>
-          </v-list-item-content>
-
-          <!-- <v-list-item-avatar
-            tile
-          >
-            <v-icon x-large color="teal">mdi-playlist-plus</v-icon>
-          </v-list-item-avatar> -->
-        </v-list-item>
-        <!-- <audio :src="audioUrl" controls preload="none"></audio> -->
+        <EpisodeDetails :episode="episode" :show-audio-controls="false"/>
       </v-carousel-item>
     </v-carousel>
   </v-card>
 </template>
 
 <script>
+import EpisodeDetails from '@/components/EpisodeDetails.vue'
 
 export default {
   name: 'EpisodesCarousel',
+  components: {
+    EpisodeDetails
+  },
   props: {
     episodes: {
       type: Array,
