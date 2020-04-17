@@ -9,7 +9,7 @@
 
       <v-row justify="center">
         <p>
-          Get started searching the {{ totalIndexed }} podcasts indexed or checkout the lastest {{numberOfMostRecent}}.
+          Get started searching the {{ totalIndexed }} podcasts indexed or checkout the latest {{numberOfMostRecent}}.
         </p>
       </v-row>
 
