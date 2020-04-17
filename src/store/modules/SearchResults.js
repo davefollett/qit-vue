@@ -1,14 +1,14 @@
 import searchAPI from '@/api/search-api'
 
 const state = {
-  results: null,
+  episodes: null,
   totalIndexed: 0,
   mostRecent: null
 }
 
 const getters = {
-  searchResults: state => {
-    return (state.results) ? state.results.hits.hits : null
+  episodes: state => {
+    return (state.episodes) ? state.episodes.hits.hits : null
   },
   totalIndexed: state => {
     return state.totalIndexed
@@ -21,7 +21,7 @@ const getters = {
 const actions = {
   async search ({ commit }, query) {
     const response = await searchAPI.search(query)
-    commit('SET_RESULTS', response.data)
+    commit('SET_EPISODES', response.data)
   },
   async totalIndexed ({ commit }) {
     const total = await searchAPI.totalIndexed()
@@ -34,8 +34,8 @@ const actions = {
 }
 
 const mutations = {
-  SET_RESULTS (state, results) {
-    state.results = results
+  SET_EPISODES (state, episodes) {
+    state.episodes = episodes
   },
   SET_TOTAL_INDEXED (state, total) {
     state.totalIndexed = total

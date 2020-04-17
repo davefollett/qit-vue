@@ -17,10 +17,10 @@
         <SearchBar></SearchBar>
       </v-row>
 
-      <SearchResultsCarousel
+      <EpisodesCarousel
         v-if="mostRecent"
         :title="mostRecentCarouselTitle"
-        :results="mostRecent"
+        :episodes="mostRecent"
       />
 
     </v-container>
@@ -29,13 +29,13 @@
 
 <script>
 import SearchBar from '@/components/SearchBar.vue'
-import SearchResultsCarousel from '@/components/SearchResultsCarousel.vue'
+import EpisodesCarousel from '@/components/EpisodesCarousel.vue'
 
 export default {
   name: 'Home',
   components: {
     SearchBar,
-    SearchResultsCarousel
+    EpisodesCarousel
   },
   data: () => ({
     numberOfMostRecent: 5

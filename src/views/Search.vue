@@ -2,14 +2,15 @@
   <div>
     <SearchBar :query="query"></SearchBar>
     <v-container>
-      <div v-if="searchResults">
-        <p>{{ searchResults.length }} results</p>
+      <div v-if="episodes">
+        <p>{{ episodesFound }} results</p>
         <hr class="mb-4">
-        <SearchResultCard
+        <EpisodeCard
           class="mb-4"
-          v-for="result in searchResults"
-          :key="result._id"
-          :result="result"/>
+          v-for="episode in episodes"
+          :key="episode._id"
+          :episode="episode"
+        />
       </div>
       <div v-else>
         <v-container fluid>
@@ -29,13 +30,13 @@
 
 <script>
 import SearchBar from '@/components/SearchBar.vue'
-import SearchResultCard from '@/components/SearchResultCard.vue'
+import EpisodeCard from '@/components/EpisodeCard.vue'
 
 export default {
   name: 'Search',
   components: {
     SearchBar,
-    SearchResultCard
+    EpisodeCard
   },
   data: () => ({
     query: 'default'
@@ -50,11 +51,11 @@ export default {
     this.search()
   },
   computed: {
-    searchResults: function () {
-      return this.$store.getters['SearchResults/searchResults']
+    episodes: function () {
+      return this.$store.getters['SearchResults/episodes']
     },
-    numberResults: function () {
-      return this.searchResults.length
+    episodesFound: function () {
+      return this.episodes.length
     }
   },
   methods: {

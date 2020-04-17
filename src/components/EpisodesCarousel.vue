@@ -12,14 +12,14 @@
       :light="!$vuetify.theme.dark"
     >
       <v-carousel-item
-        v-for="result in results"
-        :key="result._id"
+        v-for="episode in episodes"
+        :key="episode._id"
       >
         <v-list-item three-line>
           <v-list-item-content>
-            <div class="overline mb-4">{{result._source.published}}</div>
-            <v-list-item-title class="subtitle-2 mb-1 text-wrap">{{ result._source.episode_title }}</v-list-item-title>
-            <v-list-item-subtitle>{{result._source.podcast_title}}</v-list-item-subtitle>
+            <div class="overline mb-4">{{episode._source.published}}</div>
+            <v-list-item-title class="subtitle-2 mb-1 text-wrap">{{ episode._source.episode_title }}</v-list-item-title>
+            <v-list-item-subtitle>{{episode._source.podcast_title}}</v-list-item-subtitle>
           </v-list-item-content>
 
           <!-- <v-list-item-avatar
@@ -37,9 +37,9 @@
 <script>
 
 export default {
-  name: 'SearchResultsCarousel',
+  name: 'EpisodesCarousel',
   props: {
-    results: {
+    episodes: {
       type: Array,
       required: true
     },

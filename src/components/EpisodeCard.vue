@@ -39,36 +39,36 @@
 <script>
 
 export default {
-  name: 'SearchResultCard',
+  name: 'EpisodeCard',
   props: {
-    result: {
+    episode: {
       type: Object,
       required: true
     }
   },
   computed: {
     audioUrl: function () {
-      return this.result._source.audio_url
+      return this.episode._source.audio_url
     },
     date: function () {
-      return this.result._source.published
+      return this.episode._source.published
     },
     podcastTitle: function () {
-      return this.result._source.podcast_title
+      return this.episode._source.podcast_title
     },
     episodeTitle: function () {
-      return this.result._source.episode_title
+      return this.episode._source.episode_title
     },
     isQueued: function () {
-      return this.$store.getters['Queue/isQueued'](this.result)
+      return this.$store.getters['Queue/isQueued'](this.episode)
     }
   },
   methods: {
     addToQueue: function () {
-      this.$store.dispatch('Queue/add', this.result)
+      this.$store.dispatch('Queue/add', this.episode)
     },
     removeFromQueue: function () {
-      this.$store.dispatch('Queue/remove', this.result)
+      this.$store.dispatch('Queue/remove', this.episode)
     }
   }
 }

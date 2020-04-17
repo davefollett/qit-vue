@@ -7,23 +7,23 @@
         </p>
       </v-row>
 
-      <SearchResultCard
+      <EpisodeCard
           class="mb-4"
-          v-for="result in episodes"
-          :key="result._id"
-          :result="result"/>
+          v-for="episode in episodes"
+          :key="episode._id"
+          :episode="episode"/>
 
     </v-container>
   </div>
 </template>
 
 <script>
-import SearchResultCard from '@/components/SearchResultCard.vue'
+import EpisodeCard from '@/components/EpisodeCard.vue'
 
 export default {
   name: 'Queue',
   components: {
-    SearchResultCard
+    EpisodeCard
   },
   data: () => ({
     numberOfMostRecent: 5
