@@ -7,7 +7,7 @@
     >
       <v-toolbar-title class="font-weight-bold">
         <v-icon large>mdi-magnify</v-icon>
-        QIT
+        QIT-VUE
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
