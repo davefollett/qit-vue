@@ -5,18 +5,9 @@ import Queue from './modules/Queue'
 
 Vue.use(Vuex)
 
-const store = new Vuex.Store({
-// export default new Vuex.Store({
+export default new Vuex.Store({
   modules: {
     Queue,
     SearchResults
   }
 })
-
-store.subscribe((mutation, state) => {
-  // console.log(mutation)
-  // console.log(state)
-  // console.log(store)
-})
-
-export default store

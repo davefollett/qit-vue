@@ -6,6 +6,12 @@ import vuetify from './plugins/vuetify'
 
 Vue.config.productionTip = false
 
+store.subscribe((mutation, state) => {
+  console.log(mutation)
+  // console.log(state)
+  // console.log(store)
+})
+
 new Vue({
   router,
   store,
