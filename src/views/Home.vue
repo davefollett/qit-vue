@@ -2,9 +2,9 @@
   <div class="home">
     <v-container>
       <v-row justify="center">
-        <p class="title">
+        <h1 class="title">
           Welcome to QIT, the website that searches for software developer podcasts by topic.
-        </p>
+        </h1>
       </v-row>
 
       <v-row justify="center">

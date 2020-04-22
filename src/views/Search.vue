@@ -3,7 +3,7 @@
     <SearchBar :query="query"></SearchBar>
     <v-container>
       <div v-if="episodes">
-        <p>{{ episodesFound }} results</p>
+        <h1 class="title">{{ episodesFound }} results</h1>
         <hr class="mb-4">
         <EpisodeCard
           class="mb-4"

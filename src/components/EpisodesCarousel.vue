@@ -2,7 +2,7 @@
   <v-card
     raised
   >
-    <v-card-title class="teal white--text">{{ title }}</v-card-title>
+    <v-card-title class="teal white--text font-weight-black">{{ title }}</v-card-title>
     <hr>
     <v-carousel
       height="200"

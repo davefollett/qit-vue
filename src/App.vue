@@ -12,24 +12,39 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn icon to="/">
-        <v-icon large>mdi-home</v-icon>
-      </v-btn>
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on }">
+          <v-btn icon to="/" v-on="on" aria-label="Navigate To Home Page">
+            <v-icon large>mdi-home</v-icon>
+          </v-btn>
+        </template>
+        <span>Home Page</span>
+      </v-tooltip>
 
-      <v-badge
-        :content="queueLegnth"
-        :value="queueLegnth"
-        color="red"
-        overlap
-      >
-        <v-btn icon to="/queue">
-          <v-icon large>mdi-playlist-music</v-icon>
-        </v-btn>
-      </v-badge>
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on }">
+          <v-badge
+            :content="queueLegnth"
+            :value="queueLegnth"
+            color="red"
+            overlap
+          >
+            <v-btn icon to="/queue" v-on="on" aria-label="Navigate To Episode Queue Page">
+              <v-icon large>mdi-playlist-music</v-icon>
+            </v-btn>
+          </v-badge>
+        </template>
+        <span>Episode Queue Page</span>
+      </v-tooltip>
 
-      <v-btn icon to="/about">
-        <v-icon large>mdi-information</v-icon>
-      </v-btn>
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on }">
+          <v-btn icon to="/about" v-on="on" aria-label="Navigate To About Page">
+            <v-icon large>mdi-information</v-icon>
+          </v-btn>
+        </template>
+        <span>About Page</span>
+      </v-tooltip>
 
     </v-app-bar>
 

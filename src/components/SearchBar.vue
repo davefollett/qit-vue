@@ -7,7 +7,7 @@
       @keyup.enter="submit"
     >
       <template v-slot:append>
-        <v-btn class="ma-0 white--text" large color="teal" @click="submit">SEARCH</v-btn>
+        <v-btn class="ma-0 white--text font-weight-black title" x-large color="teal" @click="submit">SEARCH</v-btn>
       </template>
     </v-text-field>
   </v-container>

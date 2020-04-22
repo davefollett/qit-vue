@@ -15,6 +15,7 @@
           v-if="!isQueued"
           icon
           @click="addToQueue"
+          aria-label="Add To Queue"
         >
           <v-icon x-large color="teal">mdi-playlist-plus</v-icon>
         </v-btn>
@@ -23,6 +24,7 @@
           v-else
           icon
           @click="removeFromQueue"
+          aria-label="Remove From Queue"
         >
           <v-icon x-large color="teal">mdi-playlist-minus</v-icon>
         </v-btn>
