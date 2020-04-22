@@ -5,7 +5,10 @@
       color="teal"
       dark
     >
-      <v-toolbar-title>QIT-VUE</v-toolbar-title>
+      <v-toolbar-title class="font-weight-bold">
+        <v-icon large>mdi-magnify</v-icon>
+        QIT
+      </v-toolbar-title>
 
       <v-spacer></v-spacer>
 
